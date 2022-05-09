@@ -1,0 +1,33 @@
+<div class="tabela-default" *ngIf="listHeaderValues &&  listDataValues">
+    <div class="row-default">
+        <div class="row-container" *ngIf="listDataValues.length > 0">
+            <div class="column-default-header">
+                <div class="column-default-row-button" *ngFor="let header of listHeaderValues">
+                    <span class="column-default-label-button">{{ header.headerName}}</span>
+                </div>
+                <div class="column-default-row-button" *ngFor="let header of listHeaderValues">
+                    <span class="column-default-label-button">{{ header.headerName}}</span>
+                </div>
+                <div class="column-default-row-button">
+                    <span class="column-default-label-button"> </span>
+                </div>
+            </div>
+            <div class="column-default" *ngFor="let value of  listDataValues; let indexValue = index">
+                <div class="column-default-row" (click)="selectOption(value)" *ngFor="let header of  listHeaderValues ">
+                    <span class="column-default-label" *ngIf="!header?.childProperty">
+                        {{controlValue(value[header?.property], header?.type )}}
+                    </span>
+                    <span class="column-default-label" *ngIf="header?.childProperty">
+                        {{controlValue(value[header?.property][header?.childProperty], header?.type)}}
+                    </span>
+                </div>
+                <ng-template #defaultOption>
+                </ng-template>
+                <ng-container class="column-default-row-button" [ngTemplateOutlet]="optionTemplateRef || defaultOption "
+                    [ngTemplateOutletContext]="{ $implicit: value, index: indexValue }">
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="listDataValues.length === 0"><span> Nenhum registro encontrado.</span></div>
+</div>

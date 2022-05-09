@@ -1,0 +1,70 @@
+ 
+.tabela-default {
+    overflow: scroll;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.row-default {
+    display: flex;
+    flex-direction: column;
+}
+.column-default-header {
+    display: flex;
+    flex-direction: row;
+}
+.column-default {
+    display: flex;
+    flex-direction: row;
+    width: 2300px;
+    font-family: WorkSans;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    vertical-align: middle;
+    padding: 5px;
+}
+.column-default-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    white-space: nowrap;
+    max-width: 12em;
+    min-width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 5px;
+}
+
+.column-default-label {
+    vertical-align: baseline;
+    white-space: nowrap;
+    max-width: 12em;
+    min-width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.column-default-row-button {
+    max-width: 45em;
+    min-width: 12em;
+    margin: 0 5px;
+}
+.column-default-label-button {
+    width: 92px;
+}
+.column-default-row-check {
+    display: flex;
+    align-items: center;
+    max-width: 5em;
+    min-width: 5em;
+    margin: 0 5px;
+}
+.column-default-label-check {
+    text-align: center;
+    width: 5em;
+}
