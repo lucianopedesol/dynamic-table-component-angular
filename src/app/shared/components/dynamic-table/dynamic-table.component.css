@@ -27,6 +27,7 @@
     vertical-align: middle;
     padding: 5px;
 }
+
 .column-default-row {
     display: flex;
     justify-content: center;
@@ -48,6 +49,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
 
 .column-default-row-button {
     max-width: 45em;
