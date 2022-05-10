@@ -1,18 +1,18 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
-import { PhonePipe } from 'src/app/pipes/phone-pipe.pipe';
+import { PhonePipe } from '../../pipes/phone-pipe.pipe';
 
-type  TypeProperty = 'number' | 'string' | 'Date' | 'currency' | 'boolean' | 'phone'
+type TypeProperty = 'number' | 'string' | 'Date' | 'currency' | 'boolean' | 'phone'
 export interface HeaderProps {
-  headerName: string;
-  property: string;
-  childProperty?: string;
+  headerName: any;
+  property: any;
+  childProperty?: any;
   type: TypeProperty;
 }
 @Component({
-  selector: 'app-default-table',
-  templateUrl: './default-table.component.html',
-  styleUrls: ['./default-table.component.scss']
+  selector: 'app-dynamic-table',
+  templateUrl: './dynamic-table.component.html',
+  styleUrls: ['./dynamic-table.component.css']
 })
 export class DefaultTableComponent<T extends { name: string }> {
 
@@ -23,17 +23,20 @@ export class DefaultTableComponent<T extends { name: string }> {
   ) {
 
   }
-  picked: T;
+  picked!: T;
 
-  @Input() label: string;
-  @Input() listHeaderValues: HeaderProps[];
-  @Input() listDataValues: T[];
+  @Input()
+  label!: string;
+  @Input()
+  listHeaderValues: HeaderProps[] = [];
+  @Input()
+  listDataValues: T[] = [];
 
   @Input("selectedTemplate")
-  selectedTemplateRef: TemplateRef<any>;
+  selectedTemplateRef!: TemplateRef<any>;
 
   @ContentChild("optionTemplate", { static: false })
-  optionTemplateRef: TemplateRef<any>;
+  optionTemplateRef!: TemplateRef<any>;
 
   @Output()
   selectionChanged = new EventEmitter<T>();
@@ -43,7 +46,7 @@ export class DefaultTableComponent<T extends { name: string }> {
     this.selectionChanged.emit(option);
   }
 
-  controlValue(value, type: TypeProperty) {
+  controlValue(value: any, type: TypeProperty) {
     switch (type) {
       case 'string':
         return !value ? '' : value;
@@ -62,3 +65,4 @@ export class DefaultTableComponent<T extends { name: string }> {
     }
   }
 }
+  
